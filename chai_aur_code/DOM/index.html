@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dom Learning</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-black">
+      <h1 id="title" class="heading">
+        DOM Learning on Chai aur Code
+        <span style="display: none">Test Text</span>
+      </h1>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo libero
+        eligendi magni delectus optio amet?
+      </p>
+      <input type="password" name="" id="" />
+
+      <ul>
+        <li class="list-items">one</li>
+        <li class="list-items">two</li>
+        <li class="list-items">three</li>
+        <li class="list-items">three</li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+// Dom- Document Object Model // selectors we can use: // title.innerHtml :
+shows the text and also the html tags used in that text for styling and other
+purpose // title.textContext : shows the text which is visible to the user and
+also the hidden text which is hidden due to some styling property (like
+display:none) // title.innerText : only shows the text that is visible to the
+viewer doesn't shows the hidden text //document.quesrSelector('h2') : return the
+first h2 from our page.....return only one result. // Node List and
+HtmlCollections are not our pure arrays: // const
+tempLi=document.querySelectorAll('li') // this will select all of our list
+items. // the return we will get is a node list. // node-list is diff from
+arrays.....here in order to select one element from the list we have to use []
+brackets. // ex: tempLi[0].style.color="red"; // // similarly for the nodelist
+we also get foreach to select all elements // so we can use it as: //
+templist.forEach( (l) => { return l.style.backgroundcolor='red' }) // // in case
+of HTML-Collections we dont have any for-each or other methods to loops through
+it. // so we have to first convert our html-collections to array. // ==> toArray
+=Array.from(tempClasslist) //Array.from() is the method we can use to convert
+out HTML-collections list to an array.

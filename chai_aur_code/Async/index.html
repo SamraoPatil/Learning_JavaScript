@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: rgb(34, 34, 34);
+        color: white;
+      }
+    </style>
+    <title>Async-Chai aur Code</title>
+  </head>
+  <body>
+    <h1 id="greetName">Chai Aur Code</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // setTimeout():
+    // This are the methods which calls an api , these are provided by Browsers:
+    // setTimeout(function () {
+    //   console.log("Rohan");
+    // }, 2000);
+
+    let name = "Rohan";
+    let greet = function () {
+      console.log(`Hello Developer : ${name}`);
+    };
+    setTimeout(greet, 2000);
+
+    let change = function () {
+      document.getElementById("greetName").innerHTML =
+        "Best JS series on Youtube";
+    };
+    // setTimeout(change, 4000);
+    // to stop the event:
+
+    let stopEvent = setTimeout(change, 4000);
+
+    document.getElementById("stop").addEventListener("click", function () {
+      clearTimeout(stopEvent);
+      console.log("Our Event is Stopped ");
+    });
+  </script>
+</html>

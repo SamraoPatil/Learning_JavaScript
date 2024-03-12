@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Html Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // document.getElementById("owl").onclick= function(){
+    //   alert("Owl Clicked");
+    // }
+
+    // Best approach :>
+    //  document.getElementById("owl").addEventListener(
+    //   "click",
+    //   function () {
+    //     alert("Owl clicked through eventListener");
+    //   },
+    //   false
+    // ); // the third parameter here is default false: so mostly people even won't write it.
+    // some of the applications need this true and false parameter to run.
+
+    // jQuery - .on  / attachEvent() is also methods to write events
+
+    // Events Object:
+
+    // document.getElementById("river").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     //console.log(e); // e here is the event object.
+    //     // to view it, go in console.
+    //   },
+    //   false
+    // );
+
+    // Things to Remember:
+    // type : type of keyboard events , mouse events:
+    // timestamp:
+    // defaultPrevented:
+    // target, toElement"
+    // srcElement
+    // currentTarget:
+    // clientX,clientY,screenX,screenY:
+    // altkey,ctrlkey,shiftkey,keyCode:
+
+    // Event Propogation:
+
+    // Event Bubling:
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   function () {
+    //     console.log("Clicked inside the url");
+    //   },
+    //   false
+    // );
+    // document.getElementById("river").addEventListener(
+    //   "click",
+    //   function () {
+    //     console.log("clicked RIVER in event Propogation");
+    //   },
+    //   false
+    // );
+
+    // Event Capturing
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   function () {
+    //     console.log("Clicked inside the url");
+    //   },
+    //   true
+    // );
+    // document.getElementById("river").addEventListener(
+    //   "click",
+    //   function () {
+    //     console.log("clicked RIVER in event Propogation");
+    //   },
+    //   true
+    // );
+
+    // So Event Propogation has two Context:
+    //  1) Event bubling: ie. for default 3rd parameter or for false parameter
+    //              We use Event Bubling when we have to target inner elements(child) first and then select the outer elements(parent element)
+    //              just like here : inner image > Li > Ul..
+    //
+    //  2) Event Capturing: when the 3rd para is True:
+    //              We use Event Capturing when we have to target the outer element first and then the inner elements:
+    //              just like : Ul>Li>inner image
+    //
+
+    // case: when we dont want the bubbling of the inner element:
+    // document.getElementById("river").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log("clicked RIVER in event Propogation");
+    //     e.stopPropagation(); // this will stop the bubling of the inner Element
+    //   },
+    //   false
+    // );
+
+    // Prevent Default:
+    // document.getElementById("google").addEventListener(
+    //   "click",
+    //   function (event) {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+
+    //     console.log("Google Clicked");
+    //   },
+    //   false
+    // );
+
+    // Practise Ques: Write a event which will delete the image that we click on:
+
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   function (event) {
+    //     console.log(event);
+    //     //console.log(event.target); // tells from which target(child) event is coming..>
+    //     console.log(event.target.parentNode);
+
+    //     let removeIt = event.target.parentNode;
+    //     removeIt.remove();
+    //     // removeIt.parentNode.removeChild(removeIt);
+    //   },
+    //   false
+    // );
+
+    //  in the above approach if we click the anchor tag i.e google for that the parentnode id our Ul so if we click that it deletes all images :
+    //  to avoid that
+    // A better approach:
+    document.getElementById("images").addEventListener(
+      "click",
+      function (event) {
+        console.log(event.target.tagName);
+        if (event.target.tagName === "IMG") {
+          console.log(event.target.id);
+          let removeIt = event.target.parentNode;
+          removeIt.remove();
+        }
+        if (event.target.tagName === "A") {
+          console.log(event.target.id);
+          event.preventDefault();
+        }
+      },
+      false
+    );
+  </script>
+</html>
+
+// In Js Events run sequentially mostly, there are some expectional case though.
+// One of the Browser events: // this events run after a certain mov only, like
+// mouse hover,mouse click,key press, etc

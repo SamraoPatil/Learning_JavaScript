@@ -1,0 +1,70 @@
+Edit/Remove Elments in DOM:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chai Aur Code || DOM Edit Remove</title>
+    <style>
+      body {
+        background-color: rgb(28, 28, 28);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="language">
+      <li>JavaScript</li>
+    </ul>
+  </body>
+  <script>
+    // function addLanguage(langName) {
+    //   const li = document.createElement("li");
+    //   li.innerHTML = langName;
+    //   document.querySelector(".language").appendChild(li);
+    // }
+    // addLanguage("Python");
+    // addLanguage("TypeScript");
+
+    //This was the basic method approach:
+    // Optimized method can Be:
+
+    function addOptiLang(langname) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(langname));
+      document.querySelector(".language").appendChild(li);
+    }
+    addOptiLang("Golang");
+    addOptiLang("Java");
+    addOptiLang("C++");
+
+    // Methods to Edit Values:
+
+    const secondLang = document.querySelector("li:nth-child(2)");
+
+    const newLi = document.createElement("li");
+    newLi.textContent = "Mojo";
+    secondLang.replaceWith(newLi);
+
+    const thirdLang = document.querySelector("li:nth-child(3)");
+    const li3 = document.createElement("li");
+    li3.textContent = "TypeScript";
+    thirdLang.replaceWith(li3);
+
+    const fourthLang = document.createElement("li");
+    fourthLang.appendChild(document.createTextNode("Go-Lang"));
+    document.querySelector(".language").appendChild(fourthLang);
+
+    const fifthLang = document.createElement("li");
+    fifthLang.appendChild(document.createTextNode("Python"));
+    document.querySelector(".language").appendChild(fifthLang);
+
+    // Remove Element:
+    const secondRemove = document.querySelector("li:nth-child(2)");
+    secondRemove.remove();
+
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove();
+  </script>
+</html>

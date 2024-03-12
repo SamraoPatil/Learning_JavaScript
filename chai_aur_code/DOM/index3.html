@@ -1,0 +1,49 @@
+// Creating and Learning Node-list:
+<br />
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: rgb(28, 28, 28);
+        color: white;
+      }
+    </style>
+    <title>Chai_Aur_Code || NodeList</title>
+  </head>
+  <body></body>
+  <script>
+    // Creating a DIV element:
+
+    const div = document.createElement("div");
+    console.log(div);
+
+    //Adding Properties to the Div element:
+
+    div.className = "main";
+    div.id = Math.round(Math.random() * 10 + 1);
+
+    // if u have to select random attributes and not select default attributes:
+    div.setAttribute("title", "generated Title"); // takes key and value pair
+
+    div.style.backgroundColor = "orange";
+    div.style.padding = "15px";
+    // till now the div we have created is in memory:
+    // so to bring this in action: i.e to bring this on page:
+
+    // div.innerText = "Chai Aur Code";
+    // Instead of using .innerText we will use TextNode as innerText bring the actual value from the source and replaces it with the new value
+    // Therefore our originalvalues gets overridden,
+    // Thus to avoid it we use TextNode
+
+    const addText = document.createTextNode("Chai Aur Code"); // creates a new Value
+    // we assign that value to a variable and used that to append in the div..
+    div.appendChild(addText);
+
+    // attaching our div to page:
+    document.body.appendChild(div);
+  </script>
+</html>
